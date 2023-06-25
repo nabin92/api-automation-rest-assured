@@ -1,10 +1,16 @@
 import io.restassured.response.Response;
 import org.ado.client.RestClient;
 import org.ado.fixture.CreateProjectFixture;
+import org.ado.model.project.get.Project;
 import org.ado.reponse.ResponseSpec;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
+import static org.apache.http.HttpStatus.SC_ACCEPTED;
+import static org.apache.http.HttpStatus.SC_OK;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 
 public class ProjectTests {
 
@@ -16,16 +22,21 @@ public class ProjectTests {
     @Test
     public void shouldGetAllProjects() throws IOException {
         Response response = restClient.getProjects();
-        response.then().spec(responseSpec.getResponseSpec());
+        Project project = response
+                .then()
+                .spec(responseSpec.getResponseSpec())
+                .extract()
+                .as(Project.class);
+        assertThat(project.getCount(), greaterThanOrEqualTo(1));
     }
 
     @Test
     public void shouldGetTemplateIdAndCreateNewProject() throws IOException {
         Response res = restClient.getProcess();
-        res.then().statusCode(200);
+        res.then().statusCode(SC_OK);
         String templateId = res.jsonPath().getString("value[0].id");
         fixture.createProjectRequest(templateId);
         Response response = restClient.createProject(fixture.createProjectRequest(templateId));
-        response.then().statusCode(202);
+        response.then().statusCode(SC_ACCEPTED);
     }
 }
