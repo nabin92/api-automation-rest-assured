@@ -23,4 +23,12 @@ public class PropertyReader {
     public static String getBaseUri() throws IOException {
         return getProperties("baseuri");
     }
+
+    public static String getOrganization() throws IOException {
+        return getProperties("organization");
+    }
+
+    public static String getPAT() throws IOException {
+        return getProperties("pat");
+    }
 }

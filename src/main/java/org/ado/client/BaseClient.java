@@ -17,25 +17,25 @@ public class BaseClient {
     protected String project = "TestTribeMeetUp";
     PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
 
-    public RequestSpecification getRequestSpecificationsForCreateProject() {
+    public RequestSpecification postRequestSpecification() throws IOException {
         authScheme.setUserName("user");
-        authScheme.setPassword(pat);
+        authScheme.setPassword(PropertyReader.getPAT());
 
-        return new RequestSpecBuilder().setBaseUri(baseUri)
+        return new RequestSpecBuilder().setBaseUri(PropertyReader.getBaseUri())
                 .addQueryParam("api-version", 7.0)
-                .addPathParam("organization", organization)
+                .addPathParam("organization", PropertyReader.getOrganization())
                 .addHeader("Content-Type", "application/json")
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new RequestLoggingFilter())
                 .setAuth(authScheme).build();
     }
 
-    public RequestSpecification getRequestSpecificationsForGetRequest() throws IOException {
+    public RequestSpecification getRequestSpecifications() throws IOException {
         authScheme.setUserName("user");
-        authScheme.setPassword(pat);
+        authScheme.setPassword(PropertyReader.getPAT());
 
         return new RequestSpecBuilder().setBaseUri(PropertyReader.getBaseUri())
-                .addPathParam("organization", organization)
+                .addPathParam("organization", PropertyReader.getOrganization())
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new RequestLoggingFilter())
                 .setAuth(authScheme).build();
