@@ -12,7 +12,7 @@ This repo contains
 - Lombok has been used to generate Builders and Getters automatically for the request and response
 - faker to generate random data related to project created 
 
-This repo will help any beginner who is looking to learn Rest Assured. We need to login to https://azure.microsoft.com/en-in/products/devops
+We need to login to https://azure.microsoft.com/en-in/products/devops
 and create an organization https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops
 Also, we need a PAT (Personal Access Token).https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?toc=%2Fazure%2Fdevops%2Forganizations%2Fsecurity%2Ftoc.json&view=azure-devops&tabs=Windows
 
