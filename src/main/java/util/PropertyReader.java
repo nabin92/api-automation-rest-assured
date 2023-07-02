@@ -25,10 +25,17 @@ public class PropertyReader {
     }
 
     public static String getOrganization() throws IOException {
-        return getProperties("organization");
+        if(!System.getProperty("organization").isEmpty())
+            return System.getProperty("organization");
+        else
+            return getProperties("organization");
     }
 
     public static String getPAT() throws IOException {
-        return getProperties("pat");
+        if(!System.getProperty("pat").isEmpty())
+            return System.getProperty("pat");
+        else
+            return getProperties("pat");
+
     }
 }
