@@ -12,7 +12,7 @@ pipeline {
         bat "mvn test -Dorganization=nabinghosh11 -Dpat=jzuaiubphh76uxzjsf4axknzu62fom4n72hw7irjkh3wiblfz5oq"
       }
     }
-    stage('Test') {
+    stage('Publish') {
       steps {
         testNG failureOnFailedTestConfig: true, showFailedBuilds: true
       }
