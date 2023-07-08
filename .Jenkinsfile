@@ -17,5 +17,17 @@ pipeline {
         testNG failureOnFailedTestConfig: true, showFailedBuilds: true
       }
     }
+    stage('Server'){
+      steps{
+      rtServer{
+        id: "Artifactory",
+        url: "https://apiautomation.jfrog.io/ui/",
+        username: "nabin",
+        password: "Capita@123",
+        timeout: 300,
+        bypassProxy: true
+      }
+    }
+   }
   }
 }
