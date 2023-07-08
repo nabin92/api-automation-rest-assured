@@ -19,14 +19,14 @@ pipeline {
     }
     stage('Server') {
       steps {
-        rtServer{
-            id: Artifactory,
+        rtServer(
+            id: 'Artifactory',
             url: 'https://apiautomation.jfrog.io/artifactory',
             username: 'nabin',
             password: 'Capita@123',
             bypassProxy: true,
             timeout: 300
-            }
+            )
         }
      }
    }
