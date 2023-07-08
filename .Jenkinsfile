@@ -43,12 +43,13 @@ pipeline {
                }''',
         )
     }
+    }
       stage('Publish Build Info'){
-          steps{
+          steps {
              rtPublishBuildInfo(
                serverId:'Artifactory'
             )
-        }
-   }
+         }
+      }
   }
 }
