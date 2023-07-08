@@ -29,5 +29,20 @@ pipeline {
             )
         }
     }
+    stage('Upload'){
+      steps{
+         rtUpload(
+           serverId:'Artifactory',
+           spec: '''{
+                     "files": [
+                       {
+                         "pattern": ".jar",
+                         "target": "libs-release"
+                       }
+                    ]
+               }''',
+        )
+    }
+   }
   }
 }
