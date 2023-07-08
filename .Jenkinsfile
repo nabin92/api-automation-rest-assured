@@ -28,7 +28,6 @@ pipeline {
             timeout: 300
             )
         }
-     }
-   }
+    }
   }
 }
