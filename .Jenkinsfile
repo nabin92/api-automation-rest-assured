@@ -9,7 +9,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Running the test'
-        bat "mvn test -Dorganization=nabinghosh11 -Dpat=uj4ispsy55wtbraf6vy2ognm6ec66qtzbtk7vvkw264rdyenhc6a"
+        bat "mvn test -Dorganization=nabinghosh11 -Dpat=2hfiziwzvcq23arlpwd3id4ogoeczdcwccyntyhic5f2igt6ln5a"
       }
     }
     stage('Publish') {
