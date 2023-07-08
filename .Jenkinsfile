@@ -20,7 +20,7 @@ pipeline {
     stage('Server') {
       steps {
         rtServer{
-            id: 'Artifactory',
+            id: Artifactory,
             url: 'https://apiautomation.jfrog.io/artifactory',
             username: 'nabin',
             password: 'Capita@123',
