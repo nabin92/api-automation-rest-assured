@@ -1,5 +1,7 @@
 package util;
 
+import lombok.SneakyThrows;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,30 +11,31 @@ import java.util.Properties;
 public class PropertyReader {
     static Properties prop = new Properties();
 
-    public static void loadProperties() throws IOException {
+    @SneakyThrows
+    public static void loadProperties() {
 
         InputStream input = new FileInputStream("src/main/resources/config.properties");
-       prop.load(input);
+        prop.load(input);
     }
 
-    public static String getProperties(String property) throws IOException {
+    public static String getProperties(String property) {
         loadProperties();
         return prop.getProperty(property);
     }
 
-    public static String getBaseUri() throws IOException {
+    public static String getBaseUri()  {
         return getProperties("baseuri");
     }
 
-    public static String getOrganization() throws IOException {
-        if(!System.getProperty("organization").isEmpty())
+    public static String getOrganization() {
+        if (!System.getProperty("organization").isEmpty())
             return System.getProperty("organization");
         else
             return getProperties("organization");
     }
 
-    public static String getPAT() throws IOException {
-        if(!System.getProperty("pat").isEmpty())
+    public static String getPAT() {
+        if (!System.getProperty("pat").isEmpty())
             return System.getProperty("pat");
         else
             return getProperties("pat");

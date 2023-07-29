@@ -4,9 +4,6 @@ import org.ado.fixture.CreateProjectFixture;
 import org.ado.model.project.get.Project;
 import org.ado.reponse.ResponseSpec;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-
 import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,7 +17,7 @@ public class ProjectTests {
     CreateProjectFixture fixture = new CreateProjectFixture();
 
     @Test
-    public void shouldGetAllProjects() throws IOException {
+    public void shouldGetAllProjects()  {
         Response response = restClient.getProjects();
         Project project = response
                 .then()
@@ -31,7 +28,7 @@ public class ProjectTests {
     }
 
     @Test
-    public void shouldGetTemplateIdAndCreateNewProject() throws IOException {
+    public void shouldGetTemplateIdAndCreateNewProject() {
         Response res = restClient.getProcess();
         res.then().statusCode(SC_OK);
         String templateId = res.jsonPath().getString("value[0].id");

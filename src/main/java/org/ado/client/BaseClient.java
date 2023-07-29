@@ -6,9 +6,6 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import util.PropertyReader;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class BaseClient {
     protected static final String pat = "sdyoc6ezt7qnswzzehmvqsmm7azvgk7c7dbl2mr2d7l5radfdokq";
     protected static final String baseUri = "https://dev.azure.com";
@@ -17,7 +14,7 @@ public class BaseClient {
     protected String project = "TestTribeMeetUp";
     PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
 
-    public RequestSpecification postRequestSpecification() throws IOException {
+    public RequestSpecification postRequestSpecification()  {
         authScheme.setUserName("user");
         authScheme.setPassword(PropertyReader.getPAT());
 
@@ -30,7 +27,7 @@ public class BaseClient {
                 .setAuth(authScheme).build();
     }
 
-    public RequestSpecification getRequestSpecifications() throws IOException {
+    public RequestSpecification getRequestSpecifications() {
         authScheme.setUserName("user");
         authScheme.setPassword(PropertyReader.getPAT());
 
