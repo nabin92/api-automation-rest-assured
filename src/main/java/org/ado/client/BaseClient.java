@@ -7,14 +7,11 @@ import io.restassured.specification.RequestSpecification;
 import util.PropertyReader;
 
 public class BaseClient {
-    protected static final String pat = "sdyoc6ezt7qnswzzehmvqsmm7azvgk7c7dbl2mr2d7l5radfdokq";
-    protected static final String baseUri = "https://dev.azure.com";
-    protected String organization = "nabinghosh11";
 
     protected String project = "TestTribeMeetUp";
     PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
 
-    public RequestSpecification postRequestSpecification()  {
+    public RequestSpecification postRequestSpecification() {
         authScheme.setUserName("user");
         authScheme.setPassword(PropertyReader.getPAT());
 
